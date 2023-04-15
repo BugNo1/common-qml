@@ -16,7 +16,13 @@ Item {
     }
 
     onSetTime: function(time) {
-        timeText.text = time
+        timeText.text = getTimeString(time)
+    }
+
+    function getTimeString(time) {
+        var s = Math.floor((time / 1000) % 60).toString().padStart(2, "0")
+        var m = Math.floor(time / 1000 / 60).toString().padStart(2, "0")
+        return m + ":" + s
     }
 
     Rectangle {
