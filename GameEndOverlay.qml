@@ -3,6 +3,8 @@ import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import QtMultimedia 5.15
 
+import Theme 1.0
+
 Item {
     id: gameEndOverlay
     width: 400
@@ -44,10 +46,10 @@ Item {
     Rectangle {
         id: background
         anchors.fill: parent
-        color: "tan"
+        color: Theme.overlayBackgroundColor
         radius: 10
-        border.width: 3
-        border.color: "peru"
+        border.width: Theme.overlayBorderWidth
+        border.color: Theme.overlayBorderColor
     }
 
     Item {
@@ -91,9 +93,9 @@ Item {
         Text {
             id: winnerHeadline
             text: "Herzlichen Glückwunsch:"
-            font.family: "Tomson Talks"
-            font.pixelSize: 35
-            color: "red"
+            font.family: Theme.mainFont
+            font.pixelSize: Theme.headline2FontSize
+            color: Theme.highlightTextColor
             width: parent.width
             anchors.top: winnerImage.bottom
             anchors.margins: 25
@@ -103,9 +105,9 @@ Item {
         Text {
             id: winnerName
             text: winner.name
-            font.family: "Tomson Talks"
-            font.pixelSize: 30
-            color: "white"
+            font.family: Theme.mainFont
+            font.pixelSize: Theme.textFontSize
+            color: Theme.lightTextColor
             width: parent.width
             anchors.top: winnerHeadline.bottom
             anchors.margins: 25
@@ -115,9 +117,9 @@ Item {
         Text {
             id: winnerResult
             text: winner.timeAchievedText + " (Level: " + winner.levelAchieved + ")"
-            font.family: "Tomson Talks"
-            font.pixelSize: 30
-            color: "white"
+            font.family: Theme.mainFont
+            font.pixelSize: Theme.textFontSize
+            color: Theme.lightTextColor
             width: parent.width
             anchors.top: winnerName.bottom
             anchors.bottomMargin: 25
@@ -135,9 +137,9 @@ Item {
             id: headline
             width: parent.width
             text: "Highscores"
-            font.family: "Tomson Talks"
-            font.pixelSize: 75
-            color: "white"
+            font.family: Theme.mainFont
+            font.pixelSize: Theme.headline1FontSize
+            color: Theme.lightTextColor
             horizontalAlignment: Text.AlignHCenter
         }
 
@@ -184,7 +186,7 @@ Item {
                 height: parent.height + 6
                 color: "transparent"
                 border.width: 3
-                border.color: "peru"
+                border.color: Theme.overlayBorderColor
                 anchors.centerIn: parent
             }
         }
@@ -192,9 +194,9 @@ Item {
         Text {
             id: againText
             text: "Nochmal spielen:"
-            font.family: "Tomson Talks"
-            font.pixelSize: 30
-            color: "white"
+            font.family: Theme.mainFont
+            font.pixelSize: Theme.textFontSize
+            color: Theme.lightTextColor
             width: parent.width
             anchors.top: highscores.bottom
             anchors.margins: 25

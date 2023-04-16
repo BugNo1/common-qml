@@ -1,5 +1,7 @@
 import QtQuick 2.15
 
+import Theme 1.0
+
 Item {
     id: playerNameInput
     width: parent.width
@@ -39,10 +41,10 @@ Item {
         id: playerName
         width: parent.width - 130
         height: 35
-        color: "tan"
+        color: Theme.overlayBackgroundColor
         radius: 10
-        border.width: 3
-        border.color: "peru"
+        border.width: Theme.overlayBorderWidth
+        border.color: Theme.overlayBorderColor
         anchors.left: playerIcon.right
         anchors.leftMargin: 25
         anchors.rightMargin: 25
@@ -55,9 +57,9 @@ Item {
         TextInput {
             id: nameInput
             anchors.centerIn: parent
-            font.family: "Tomson Talks"
-            font.pixelSize: 30
-            color: "white"
+            font.family: Theme.mainFont
+            font.pixelSize: Theme.highlightTextColor
+            color: Theme.lightTextColor
             onTextEdited: {
                 player.name = text
             }

@@ -3,6 +3,8 @@ import QtMultimedia 5.15
 import QtQuick.Shapes 1.15
 import QtQuick.Layouts 1.15
 
+import Theme 1.0
+
 Item {
     id: lifeIndicator
     width: 200
@@ -50,9 +52,9 @@ Item {
         id: name
         width: parent.width
         text: player.name
-        font.family: "Tomson Talks"
-        font.pixelSize: 30
-        color: "white"
+        font.family: Theme.mainFont
+        font.pixelSize: Theme.textFontSize
+        color: Theme.lightTextColor
         anchors.top: parent.top
         horizontalAlignment: Text.AlignHCenter
     }
@@ -62,19 +64,19 @@ Item {
         width: parent.width
         height: 40
         anchors.top: name.bottom
-        color: "tan"
+        color: Theme.overlayBackgroundColor
         radius: 10
-        border.width: 3
-        border.color: "peru"
+        border.width: Theme.overlayBorderWidth
+        border.color: Theme.overlayBorderColor
     }
 
     Text {
         id: lastResult
         width: parent.width
         text: player.timeAchievedText + " (Level: " + player.levelAchieved + ")"
-        font.family: "Tomson Talks"
-        font.pixelSize: 22
-        color: "white"
+        font.family: Theme.mainFont
+        font.pixelSize: Theme.smallTextFontSize
+        color: Theme.lightTextColor
         visible: !model.enabled
         anchors.top: background.bottom
         horizontalAlignment: Text.AlignHCenter

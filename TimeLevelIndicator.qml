@@ -3,6 +3,8 @@ import QtMultimedia 5.15
 import QtQuick.Shapes 1.15
 import QtQuick.Layouts 1.15
 
+import Theme 1.0
+
 Item {
     id: timeLevelIndicator
     height: 40
@@ -28,10 +30,10 @@ Item {
     Rectangle {
         id: background
         anchors.fill: parent
-        color: "tan"
+        color: Theme.overlayBackgroundColor
         radius: 10
-        border.width: 3
-        border.color: "peru"
+        border.width: Theme.overlayBorderWidth
+        border.color: Theme.overlayBorderColor
     }
 
     Text {

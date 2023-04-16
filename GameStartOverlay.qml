@@ -1,6 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 
+import Theme 1.0
+
 Item {
     id: gameStartOverlay
     width: 400
@@ -23,19 +25,19 @@ Item {
     Rectangle {
         id: background
         anchors.fill: parent
-        color: "tan"
+        color: Theme.overlayBackgroundColor
         radius: 10
-        border.width: 3
-        border.color: "peru"
+        border.width: Theme.overlayBorderWidth
+        border.color: Theme.overlayBorderColor
     }
 
     Text {
         id: headline
         width: parent.width
         text: gameName
-        font.family: "Tomson Talks"
-        font.pixelSize: 100
-        color: "white"
+        font.family: Theme.mainFont
+        font.pixelSize: Theme.headline1FontSize
+        color: Theme.lightTextColor
         horizontalAlignment: Text.AlignHCenter
     }
 
@@ -58,9 +60,9 @@ Item {
     Text {
         id: pressStartText
         text: "Zum Start bitte drücken:"
-        font.family: "Tomson Talks"
-        font.pixelSize: 30
-        color: "white"
+        font.family: Theme.mainFont
+        font.pixelSize: Theme.textFontSize
+        color: Theme.lightTextColor
         width: parent.width
         anchors.top: player2Input.bottom
         anchors.margins: 25

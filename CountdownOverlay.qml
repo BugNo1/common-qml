@@ -1,15 +1,13 @@
 import QtQuick 2.15
 import QtMultimedia 5.15
 
+import Theme 1.0
+
 Item {
     id: countdownOverlay
     width: 400
     height: 400
     anchors.centerIn: parent
-
-    property string fontFamily: "Ubuntu"
-    property int fontPixelSize: 200
-    property string fontColor: "white"
 
     property int currentNumber: 5
     property var signalStart
@@ -23,9 +21,9 @@ Item {
         id: countdownText
         anchors.fill: parent
         text: currentNumber
-        font.family: fontFamily
-        font.pixelSize: fontPixelSize
-        color: fontColor
+        font.family: Theme.countdownFont
+        font.pixelSize: Theme.countdownFontSize
+        color: Theme.lightTextColor
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         OpacityAnimator {
