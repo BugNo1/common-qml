@@ -58,7 +58,7 @@ Item {
             id: nameInput
             anchors.centerIn: parent
             font.family: Theme.mainFont
-            font.pixelSize: Theme.highlightTextColor
+            font.pixelSize: Theme.textFontSize
             color: Theme.lightTextColor
             onTextEdited: {
                 player.name = text
