@@ -60,6 +60,7 @@ Item {
             font.family: Theme.mainFont
             font.pixelSize: Theme.textFontSize
             color: Theme.lightTextColor
+            maximumLength: 20
             onTextEdited: {
                 player.name = text
             }
