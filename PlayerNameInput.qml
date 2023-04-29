@@ -28,8 +28,8 @@ Item {
 
     Image {
         id: playerIcon
-        width: 30
-        height: 30
+        width: playerNameInput.height
+        height: playerNameInput.height
         rotation: 45
         source: imageSource
         anchors.left: parent.left

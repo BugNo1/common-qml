@@ -43,6 +43,7 @@ Item {
         font.pointSize: 18
         font.family: "Courier"
         text: "Level:"
+        color: Theme.darkTextColor
     }
 
     Text {
@@ -52,5 +53,6 @@ Item {
         font.pointSize: 18
         font.family: "Courier"
         text: "00:00"
+        color: Theme.darkTextColor
     }
 }
