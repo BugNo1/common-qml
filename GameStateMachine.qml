@@ -39,6 +39,10 @@ Item {
                 targetState: gameStoppedState
                 signal: signalStopGame
             }
+            DSM.SignalTransition {
+                targetState: countdownState
+                signal: signalStartCountdown
+            }
             onEntered: gameStartAction()
         }
         DSM.State {

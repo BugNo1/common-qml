@@ -13,3 +13,11 @@ function detectCollisionCircleCircle(item1, item2) {
     var colliding = distance < item1.hitboxRadius + item2.hitboxRadius
     return colliding
 }
+
+function range(start, end) {
+    var result = []
+    for (let i = start; i <= end; i++) {
+        result.push(i)
+    }
+    return result
+}
