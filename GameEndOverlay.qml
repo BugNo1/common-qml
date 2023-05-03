@@ -11,10 +11,16 @@ Item {
     height: 570
     anchors.centerIn: parent
 
+    property var highscoreType
     property var winner: GameData.winner
     property var signalStart
     property string highscoreAnimatedImageSource: ""
     property var nextState
+
+    enum HighscoreType {
+        Coop,
+        PvP
+    }
 
     function onButtonPressed() {
         if (highscoreListItem.visible) {
@@ -116,7 +122,13 @@ Item {
 
         Text {
             id: winnerResult
-            text: winner.timeAchievedText + " (Level: " + winner.levelAchieved + ")"
+            text: {
+                if (highscoreType === GameEndOverlay.HighscoreType.PvP) {
+                    winner.timeAchievedText + " (Level: " + winner.levelAchieved + ")"
+                } else if (highscoreType === GameEndOverlay.HighscoreType.Coop) {
+                    "Punkte: " + winner.pointsAchieved
+                }
+            }
             font.family: Theme.mainFont
             font.pixelSize: Theme.textFontSize
             color: Theme.lightTextColor
