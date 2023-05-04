@@ -29,8 +29,14 @@ Item {
                 gameEndOverlay.destroy()
             }
         } else {
-            if ((button1.buttonState && button1.visible) || (button2.buttonState && button2.visible)) {
-                nextState()
+            if (highscoreType === GameEndOverlay.HighscoreType.PvP) {
+                if ((button1.buttonState && button1.visible) || (button2.buttonState && button2.visible)) {
+                    nextState()
+                }
+            } else if (highscoreType === GameEndOverlay.HighscoreType.Coop) {
+                if (button1.buttonState && button2.buttonState) {
+                    nextState()
+                }
             }
         }
     }
@@ -295,11 +301,17 @@ Item {
         sound.loops = Audio.Infinite
         sound.play()
         buttonLayout.visible = true
-        if (winner.playerId === 1) {
+        if (highscoreType === GameEndOverlay.HighscoreType.PvP) {
+            if (winner.playerId === 1) {
+                button1.visible = true
+            } else {
+                button2.visible = true
+            }
+        } else if (highscoreType === GameEndOverlay.HighscoreType.Coop) {
             button1.visible = true
-        } else {
             button2.visible = true
         }
+
         nextState = stateShowHighScoreList
     }
 

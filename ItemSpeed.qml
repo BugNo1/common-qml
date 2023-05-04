@@ -7,6 +7,8 @@ Item {
     width: 50
     height: 50
 
+    property int minimalSpeed: 50
+    property int minimalWaitTime: 30000
     property bool itemActive: false
     visible: false
 
@@ -50,12 +52,12 @@ Item {
     }
 
     function startTimer() {
-        timer.interval = Math.round(Math.random() * 30000) + 30000
+        timer.interval = Math.round(Math.random() * minimalWaitTime) + minimalWaitTime
         timer.start()
     }
 
     function setSpeed() {
-        speed = (Math.round(Math.random() * 5) + 1) * 50
+        speed = (Math.round(Math.random() * 5) * 50) + minimalSpeed
     }
 
     Timer {
