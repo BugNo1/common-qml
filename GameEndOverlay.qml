@@ -11,13 +11,13 @@ Item {
     height: 570
     anchors.centerIn: parent
 
-    property var highscoreType
+    property var gameType
     property var winner: GameData.winner
     property var signalStart
     property string highscoreAnimatedImageSource: ""
     property var nextState
 
-    enum HighscoreType {
+    enum GameType {
         Coop,
         PvP
     }
@@ -29,11 +29,11 @@ Item {
                 gameEndOverlay.destroy()
             }
         } else {
-            if (highscoreType === GameEndOverlay.HighscoreType.PvP) {
+            if (gameType === GameEndOverlay.GameType.PvP) {
                 if ((button1.buttonState && button1.visible) || (button2.buttonState && button2.visible)) {
                     nextState()
                 }
-            } else if (highscoreType === GameEndOverlay.HighscoreType.Coop) {
+            } else if (gameType === GameEndOverlay.GameType.Coop) {
                 if (button1.buttonState && button2.buttonState) {
                     nextState()
                 }
@@ -129,9 +129,9 @@ Item {
         Text {
             id: winnerResult
             text: {
-                if (highscoreType === GameEndOverlay.HighscoreType.PvP) {
+                if (gameType === GameEndOverlay.GameType.PvP) {
                     winner.timeAchievedText + " (Level: " + winner.levelAchieved + ")"
-                } else if (highscoreType === GameEndOverlay.HighscoreType.Coop) {
+                } else if (gameType === GameEndOverlay.GameType.Coop) {
                     "Punkte: " + winner.pointsAchieved
                 }
             }
@@ -301,13 +301,13 @@ Item {
         sound.loops = Audio.Infinite
         sound.play()
         buttonLayout.visible = true
-        if (highscoreType === GameEndOverlay.HighscoreType.PvP) {
+        if (gameType === GameEndOverlay.GameType.PvP) {
             if (winner.playerId === 1) {
                 button1.visible = true
             } else {
                 button2.visible = true
             }
-        } else if (highscoreType === GameEndOverlay.HighscoreType.Coop) {
+        } else if (gameType === GameEndOverlay.GameType.Coop) {
             button1.visible = true
             button2.visible = true
         }
