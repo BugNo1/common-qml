@@ -3,11 +3,14 @@ import QtMultimedia 5.15
 import QtQuick.Shapes 1.15
 
 Item {
-    id: itemEnlarge
+    id: collectibleItem
     width: 50
     height: 50
 
     property int minimalWaitTime: 30000
+    property string itemImageSource: ""
+    property string hitSoundSource: ""
+    property string dropSoundSource: "../common-media/item-drop.wav"
     property bool itemActive: false
     visible: false
 
@@ -17,14 +20,18 @@ Item {
     property int hitboxY: 0
     signal hit(condition: bool, action: var)
 
+    property var actionAppend: function func() {}
+    property var timerTriggeredAppend: function func() {}
+
     onHit: function(condition, action) {
         if (condition) {
             action()
-            itemEnlarge.visible = false
+            collectibleItem.visible = false
             hitSound.source = ""
-            hitSound.source = "../common-media/transformation.wav"
+            hitSound.source = hitSoundSource
             hitSound.play()
             startTimer()
+            actionAppend()
         }
     }
 
@@ -33,7 +40,7 @@ Item {
             startTimer()
         } else {
             timer.stop()
-            itemEnlarge.visible = false
+            collectibleItem.visible = false
             dropSound.source = ""
             hitSound.source = ""
         }
@@ -58,26 +65,27 @@ Item {
         repeat: false
         onTriggered: {
             setRandomPosition()
-            itemEnlarge.visible = true
+            collectibleItem.visible = true
             dropSound.source = ""
-            dropSound.source = "../common-media/item-drop.wav"
+            dropSound.source = dropSoundSource
             dropSound.play()
+            timerTriggeredAppend()
         }
     }
 
     Image {
         id: itemImage
         anchors.fill: parent
-        source: "../common-media/loupe.png"
+        source: itemImageSource
     }
 
     Audio {
         id: dropSound
-        source: "../common-media/item-drop.wav"
+        source: dropSoundSource
     }
 
     Audio {
         id: hitSound
-        source: "../common-media/transformation.wav"
+        source: hitSoundSource
     }
 }
