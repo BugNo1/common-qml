@@ -21,3 +21,95 @@ function range(start, end) {
     }
     return result
 }
+
+function getStartQuadrant() {
+    return Math.round(Math.random() * 5) + 1
+}
+
+function getTargetQuadrant(startQuadrant) {
+    switch(startQuadrant) {
+        case 1: {
+            return 3
+        }
+        case 2: {
+            return 4
+        }
+        case 3: {
+            return 1
+        }
+        case 4: {
+            return 2
+        }
+        case 5: {
+            return 6
+        }
+        case 6: {
+            return 5
+        }
+    }
+}
+
+function getRandomPosition(item, window, quadrant) {
+    // quadrant:
+    // 1: top left
+    // 2: top right
+    // 3: bottom right
+    // 4: bottom left
+    // 5: left
+    // 6: right
+
+    var x1 = 0
+    var x2 = 0
+    var y1 = 0
+    var y2 = 0
+
+    switch(quadrant) {
+        case 1: {
+            x1 = - item.width
+            x2 = (window.width / 2) - item.width
+            y1 = - item.height
+            y2 = - item.height
+            break
+        }
+        case 2: {
+            x1 = window.width / 2
+            x2 = window.width
+            y1 = - item.height
+            y2 = - item.height
+            break
+        }
+        case 3: {
+            x1 = window.width / 2
+            x2 = window.width
+            y1 = window.height + item.height
+            y2 = window.height + item.height
+            break
+        }
+        case 4: {
+            x1 = - item.width
+            x2 = (window.width / 2) - item.width
+            y1 = window.height + item.height
+            y2 = window.height + item.height
+            break
+        }
+        case 5: {
+            x1 = - (item.height + 300)
+            x2 = - (item.height + 300)
+            y1 = 0
+            y2 = window.height
+            break
+        }
+        case 6: {
+            x1 = window.width + item.height
+            x2 = window.width + item.height
+            y1 = 0
+            y2 = window.height
+            break
+        }
+    }
+
+    return {
+        x: Math.round(Math.random() * (x2 - x1 + 1)) + x1,
+        y: Math.round(Math.random() * (y2 - y1 + 1)) + y1
+    }
+}
