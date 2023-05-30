@@ -14,6 +14,16 @@ function detectCollisionCircleCircle(item1, item2) {
     return colliding
 }
 
+function detectCollisionRectangleRectangle(item1, item2) {
+    if (item1.x + item1.width >= item2.x &&
+        item1.x <= item2.x + item2.width &&
+        item1.y + item1.height >= item2.y &&
+        item1.y <= item2.y + item2.height) {
+            return true
+    }
+    return false
+}
+
 function range(start, end) {
     var result = []
     for (let i = start; i <= end; i++) {
