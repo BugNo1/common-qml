@@ -24,6 +24,12 @@ function detectCollisionRectangleRectangle(item1, item2) {
     return false
 }
 
+function distance(x1, y1, x2, y2) {
+    var a = x1 - x2
+    var b = y1 - y2
+    return Math.sqrt(a*a + b*b)
+}
+
 function range(start, end) {
     var result = []
     for (let i = start; i <= end; i++) {
