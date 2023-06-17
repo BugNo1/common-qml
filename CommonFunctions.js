@@ -24,6 +24,15 @@ function detectCollisionRectangleRectangle(item1, item2) {
     return false
 }
 
+function centerYDistanceRelativeRectangleRectangle(item1, item2) {
+    // item1 is racket, item2 is ball
+    // result is from -1.0 to 1.0
+    var centerYItem1 = item1.y + (item1.height / 2)
+    var centerYItem2 = item2.y + (item2.height / 2)
+    var centerYDistance =  centerYItem2 - centerYItem1
+    return centerYDistance / (item1.height / 2)
+}
+
 function distance(x1, y1, x2, y2) {
     var a = x1 - x2
     var b = y1 - y2
