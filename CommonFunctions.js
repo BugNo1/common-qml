@@ -40,9 +40,9 @@ function detectCollisionCircleRectangle(circle, rectangle) {
         closestY = rectangle.y + rectangle.height
     }
 
-    var distance = distance(circle.hitboxX, circle.hitboxY, closestX, closestY)
+    var d = distance(circle.hitboxX, circle.hitboxY, closestX, closestY)
 
-    return distance <= circle.hitboxRadius
+    return d <= circle.hitboxRadius
 }
 
 function centerYDistanceRelativeRectangleRectangle(item1, item2) {
