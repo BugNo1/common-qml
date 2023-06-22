@@ -14,6 +14,31 @@ function detectCollisionCircleCircle(item1, item2) {
     return colliding
 }
 
+function detectCollisionRectangleRectangle(item1, item2) {
+    if (item1.x + item1.width >= item2.x &&
+        item1.x <= item2.x + item2.width &&
+        item1.y + item1.height >= item2.y &&
+        item1.y <= item2.y + item2.height) {
+            return true
+    }
+    return false
+}
+
+function centerYDistanceRelativeRectangleRectangle(item1, item2) {
+    // item1 is racket, item2 is ball
+    // result is from -1.0 to 1.0
+    var centerYItem1 = item1.y + (item1.height / 2)
+    var centerYItem2 = item2.y + (item2.height / 2)
+    var centerYDistance =  centerYItem2 - centerYItem1
+    return centerYDistance / (item1.height / 2)
+}
+
+function distance(x1, y1, x2, y2) {
+    var a = x1 - x2
+    var b = y1 - y2
+    return Math.sqrt(a*a + b*b)
+}
+
 function range(start, end) {
     var result = []
     for (let i = start; i <= end; i++) {

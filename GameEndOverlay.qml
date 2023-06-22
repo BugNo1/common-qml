@@ -12,6 +12,7 @@ Item {
     anchors.centerIn: parent
 
     property var gameType
+    property var scoreType
     property var winner: GameData.winner
     property var signalStart
     property string highscoreAnimatedImageSource: ""
@@ -20,6 +21,11 @@ Item {
     enum GameType {
         Coop,
         PvP
+    }
+
+    enum ScoreType {
+        Level,
+        Points
     }
 
     function onButtonPressed() {
@@ -129,9 +135,9 @@ Item {
         Text {
             id: winnerResult
             text: {
-                if (gameType === GameEndOverlay.GameType.PvP) {
+                if (scoreType === GameEndOverlay.ScoreType.Level) {
                     winner.timeAchievedText + " (Level: " + winner.levelAchieved + ")"
-                } else if (gameType === GameEndOverlay.GameType.Coop) {
+                } else if (scoreType === GameEndOverlay.ScoreType.Points) {
                     "Punkte: " + winner.pointsAchieved
                 }
             }
