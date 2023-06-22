@@ -24,6 +24,27 @@ function detectCollisionRectangleRectangle(item1, item2) {
     return false
 }
 
+function detectCollisionCircleRectangle(circle, rectangle) {
+    var closestX = circle.hitboxX
+    var closestY = circle.hitboxY
+
+    // get closest edge
+    if (circle.hitboxX < rectangle.x) {
+        closestX = rectangle.x
+    } else if (circle.hitboxX > rectangle.x + rectangle.width) {
+        closestX = rectangle.x + rectangle.width
+    }
+    if (circle.hitboxY < rectangle.y) {
+        closestY = rectangle.y
+    } else if (circle.hitboxY > rectangle.y + rectangle.height) {
+        closestY = rectangle.y + rectangle.height
+    }
+
+    var distance = distance(circle.hitboxX, circle.hitboxY, closestX, closestY)
+
+    return distance <= circle.hitboxRadius
+}
+
 function centerYDistanceRelativeRectangleRectangle(item1, item2) {
     // item1 is racket, item2 is ball
     // result is from -1.0 to 1.0
