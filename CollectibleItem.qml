@@ -12,6 +12,8 @@ Item {
     property string hitSoundSource: ""
     property string dropSoundSource: "../common-media/item-drop.wav"
     property bool itemActive: false
+    property bool randomX: true
+    property bool randomY: true
     visible: false
 
     // used for collision detection (hitbox is a circle)
@@ -47,8 +49,12 @@ Item {
     }
 
     function setRandomPosition() {
-        x = Math.round(Math.random() * (mainWindow.width - 200)) + 100
-        y = Math.round(Math.random() * (mainWindow.height - 200)) + 100
+        if (randomX) {
+            x = Math.round(Math.random() * (mainWindow.width - 200)) + 100
+        }
+        if (randomY) {
+            y = Math.round(Math.random() * (mainWindow.height - 200)) + 100
+        }
         hitboxX = x + width / 2
         hitboxY = y + height / 2
     }
